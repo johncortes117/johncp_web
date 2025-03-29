@@ -403,7 +403,7 @@ export default function Portfolio() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            John Cortes
+            John Cortés
           </motion.div>
           <motion.nav
             className="hidden md:flex gap-6"
@@ -457,7 +457,7 @@ export default function Portfolio() {
                 <span className="sr-only">LinkedIn</span>
               </Button>
             </Link>
-            <Link href="mailto:john.cortes@upec.edu.ec">
+            <Link href="mailto:stevencortespozo@gmail.com">
               <Button
                 variant="ghost"
                 size="icon"
@@ -522,7 +522,7 @@ export default function Portfolio() {
                       <span className="sr-only">LinkedIn</span>
                     </Button>
                   </Link>
-                  <Link href="mailto:john.cortes@upec.edu.ec">
+                  <Link href="mailto:stevencortespozo@gmail.com">
                     <Button variant="ghost" size="icon" className="text-gray-300 hover:text-blue-400">
                       <Mail className="h-5 w-5" />
                       <span className="sr-only">Email</span>
@@ -571,7 +571,7 @@ export default function Portfolio() {
                   >
                     Hi, I'm{" "}
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
-                      John Cortes
+                      John Cortés
                     </span>
                   </motion.h1>
 
@@ -669,7 +669,7 @@ export default function Portfolio() {
                               {/* Replace with your image */}
                               <Image
                                 src="/placeholder.svg?height=400&width=400&text=Your+Photo"
-                                alt="John Cortes"
+                                alt="John Cortés"
                                 fill
                                 className="object-cover transition-transform duration-500 group-hover:scale-110"
                               />
@@ -1508,10 +1508,10 @@ export default function Portfolio() {
                             <div>
                               <p className="text-gray-400 text-sm">Email</p>
                               <a
-                                href="mailto:john.cortes@upec.edu.ec"
+                                href="mailto:stevencortespozo@gmail.com"
                                 className="text-white hover:text-blue-400 transition-colors"
                               >
-                                john.cortes@upec.edu.ec
+                                stevencortespozo@gmail.com
                               </a>
                             </div>
                           </div>
@@ -1671,7 +1671,7 @@ export default function Portfolio() {
               transition={{ duration: 0.5 }}
               className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 mb-4 md:mb-0"
             >
-              John Cortes
+              John Cortés
             </motion.div>
 
             <div className="flex gap-4 mt-4 md:mt-0">
@@ -1687,7 +1687,7 @@ export default function Portfolio() {
                   <span className="sr-only">LinkedIn</span>
                 </Button>
               </Link>
-              <Link href="mailto:john.cortes@upec.edu.ec">
+              <Link href="mailto:stevencortespozo@gmail.com">
                 <Button variant="ghost" size="icon" className="text-gray-400 hover:text-blue-400">
                   <Mail className="h-5 w-5" />
                   <span className="sr-only">Email</span>
@@ -1698,7 +1698,7 @@ export default function Portfolio() {
 
           <div className="border-t border-blue-900/30 mt-6 pt-6 text-center">
             <p className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} | John Cortes - AI & Machine Learning Student | All Rights Reserved
+              © {new Date().getFullYear()} | John Cortés | All Rights Reserved
             </p>
           </div>
         </div>
