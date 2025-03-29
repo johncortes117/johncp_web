@@ -665,7 +665,7 @@ export default function Portfolio() {
                             <div className="w-full h-full rounded-full overflow-hidden relative group">
                               {/* Replace with your image */}
                               <Image
-                                src="/placeholder.svg?height=400&width=400&text=Your+Photo"
+                                src="/placeholder-user.jpg?height=400&width=400&text=Your+Photo"
                                 alt="John Cortés"
                                 fill
                                 className="object-cover transition-transform duration-500 group-hover:scale-110"
