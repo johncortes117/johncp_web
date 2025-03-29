@@ -43,7 +43,7 @@ export default function Portfolio() {
 
   // Typing effect for hero text
   const [text, setText] = useState("")
-  const fullText = "AI & Machine Learning Student"
+  const fullText = "AI/ML Student"
   const typingSpeed = 100
 
   useEffect(() => {
