@@ -11,7 +11,7 @@ const poppins = Poppins({
 })
 
 export const metadata = {
-  title: "John Cortés - Data Science & AI/ML Developer",
+  title: "John Cortés",
   description:
     "Personal portfolio of John Cortés, a developer specializing in Data Science and Artificial Intelligence",
   keywords: "AI, Machine Learning, Data Science, Developer, Portfolio, John Cortés",

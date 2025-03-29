@@ -558,9 +558,6 @@ export default function Portfolio() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
                   >
-                    <span className="bg-blue-500/10 text-blue-400 py-1 px-3 rounded-full text-sm font-medium border border-blue-500/20">
-                      AI & Machine Learning Student
-                    </span>
                   </motion.div>
 
                   <motion.h1
