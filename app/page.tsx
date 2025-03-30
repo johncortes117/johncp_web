@@ -34,7 +34,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 export default function Portfolio() {
   const [mounted, setMounted] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
   const [selectedCertificate, setSelectedCertificate] = useState<any>(null)
   const heroRef = useRef(null)
   const isHeroInView = useInView(heroRef, { once: false })
@@ -48,29 +47,7 @@ export default function Portfolio() {
 
   useEffect(() => {
     setMounted(true)
-
-    // Simulate loading
-    const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 1000)
-
-    if (isHeroInView) {
-      let i = 0
-      const typingInterval = setInterval(() => {
-        if (i < fullText.length) {
-          setText(fullText.substring(0, i + 1))
-          i++
-        } else {
-          clearInterval(typingInterval)
-        }
-      }, typingSpeed)
-
-      return () => {
-        clearInterval(typingInterval)
-        clearTimeout(timer)
-      }
-    }
-  }, [isHeroInView, fullText])
+  }, [])
 
   // Close modal when escape key is pressed
   useEffect(() => {
@@ -100,21 +77,6 @@ export default function Portfolio() {
   }, [selectedCertificate])
 
   if (!mounted) return null
-
-  if (isLoading) {
-    return (
-      <div className="fixed inset-0 bg-black flex items-center justify-center z-50">
-        <div className="text-center">
-          <motion.div
-            className="w-16 h-16 border-4 border-blue-500/30 border-t-blue-500 rounded-full"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-          />
-          <p className="mt-4 text-blue-400 font-medium">Loading...</p>
-        </div>
-      </div>
-    )
-  }
 
   // Project Card Component
   const ProjectCard = ({ project, index }: { project: any; index: number }) => (
