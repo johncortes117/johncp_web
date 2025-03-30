@@ -1,9 +1,15 @@
-"use client"
+"use client";
 
-import { useState, useEffect, useRef } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion"
+import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useInView,
+  AnimatePresence,
+} from "framer-motion";
 import {
   Github,
   Linkedin,
@@ -25,58 +31,58 @@ import {
   Menu,
   X,
   ArrowUp,
-} from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function Portfolio() {
-  const [mounted, setMounted] = useState(false)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [selectedCertificate, setSelectedCertificate] = useState<any>(null)
-  const heroRef = useRef(null)
-  const isHeroInView = useInView(heroRef, { once: false })
-  const { scrollYProgress } = useScroll()
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
+  const [mounted, setMounted] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [selectedCertificate, setSelectedCertificate] = useState<any>(null);
+  const heroRef = useRef(null);
+  const isHeroInView = useInView(heroRef, { once: false });
+  const { scrollYProgress } = useScroll();
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
 
   // Typing effect for hero text
-  const [text, setText] = useState("")
-  const fullText = "AI/ML Student"
-  const typingSpeed = 100
+  const [text, setText] = useState("");
+  const fullText = "AI/ML Student";
+  const typingSpeed = 100;
 
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
   // Close modal when escape key is pressed
   useEffect(() => {
     const handleEsc = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setSelectedCertificate(null)
+        setSelectedCertificate(null);
       }
-    }
-    window.addEventListener("keydown", handleEsc)
+    };
+    window.addEventListener("keydown", handleEsc);
 
     return () => {
-      window.removeEventListener("keydown", handleEsc)
-    }
-  }, [])
+      window.removeEventListener("keydown", handleEsc);
+    };
+  }, []);
 
   // Prevent body scroll when modal is open
   useEffect(() => {
     if (selectedCertificate) {
-      document.body.style.overflow = "hidden"
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "auto"
+      document.body.style.overflow = "auto";
     }
 
     return () => {
-      document.body.style.overflow = "auto"
-    }
-  }, [selectedCertificate])
+      document.body.style.overflow = "auto";
+    };
+  }, [selectedCertificate]);
 
-  if (!mounted) return null
+  if (!mounted) return null;
 
   // Project Card Component
   const ProjectCard = ({ project, index }: { project: any; index: number }) => (
@@ -100,7 +106,10 @@ export default function Portfolio() {
           <Card className="relative h-full bg-gradient-to-br from-blue-900/30 to-black border-blue-500/20 overflow-hidden transition-all duration-300 group-hover:border-blue-500/40">
             <div className="relative h-48 overflow-hidden">
               <Image
-                src={project.image || "/placeholder.svg?height=200&width=400&text=Project+Preview"}
+                src={
+                  project.image ||
+                  "/placeholder.svg?height=200&width=400&text=Project+Preview"
+                }
                 alt={project.title}
                 width={400}
                 height={200}
@@ -111,7 +120,11 @@ export default function Portfolio() {
               {/* Category badge */}
               <div className="absolute top-3 right-3">
                 <Badge className="bg-blue-600/80 hover:bg-blue-600 text-white border-none backdrop-blur-sm">
-                  {project.category === "ai" ? "AI/ML" : project.category === "web" ? "Web/Mobile" : "Other"}
+                  {project.category === "ai"
+                    ? "AI/ML"
+                    : project.category === "web"
+                    ? "Web/Mobile"
+                    : "Other"}
                 </Badge>
               </div>
             </div>
@@ -119,7 +132,9 @@ export default function Portfolio() {
               <h3 className="text-xl font-bold mb-2 text-blue-400 group-hover:text-blue-300 transition-colors">
                 {project.title}
               </h3>
-              <p className="text-gray-300 mb-4 line-clamp-3">{project.description}</p>
+              <p className="text-gray-300 mb-4 line-clamp-3">
+                {project.description}
+              </p>
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.tags.map((tag: string, i: number) => (
                   <Badge
@@ -131,17 +146,24 @@ export default function Portfolio() {
                 ))}
               </div>
               <div className="inline-flex items-center text-blue-400 group-hover:text-blue-300 transition-colors">
-                View Project <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                View Project{" "}
+                <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </div>
             </CardContent>
           </Card>
         </div>
       </a>
     </motion.div>
-  )
+  );
 
   // Certificate Modal Component
-  const CertificateModal = ({ certificate, onClose }: { certificate: any; onClose: () => void }) => (
+  const CertificateModal = ({
+    certificate,
+    onClose,
+  }: {
+    certificate: any;
+    onClose: () => void;
+  }) => (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -174,15 +196,23 @@ export default function Portfolio() {
               </div>
 
               <div className="flex-1">
-                <h3 className="text-2xl font-bold text-blue-300 mb-2">{certificate.title}</h3>
+                <h3 className="text-2xl font-bold text-blue-300 mb-2">
+                  {certificate.title}
+                </h3>
 
                 <div className="flex items-center gap-2 mb-4 text-sm">
-                  <span className="text-blue-400 font-medium">{certificate.issuer}</span>
+                  <span className="text-blue-400 font-medium">
+                    {certificate.issuer}
+                  </span>
                   <span className="text-gray-500">•</span>
                   <span className="text-gray-400">{certificate.date}</span>
                 </div>
 
-                {certificate.description && <p className="text-gray-300 mb-6">{certificate.description}</p>}
+                {certificate.description && (
+                  <p className="text-gray-300 mb-6">
+                    {certificate.description}
+                  </p>
+                )}
 
                 <a
                   href={certificate.link}
@@ -199,7 +229,7 @@ export default function Portfolio() {
         </Card>
       </motion.div>
     </motion.div>
-  )
+  );
 
   return (
     <div className="min-h-screen bg-black text-white font-poppins">
@@ -217,26 +247,25 @@ export default function Portfolio() {
               key={`neuron-${i}`}
               className="absolute rounded-full bg-blue-500"
               initial={{
-                width: `${Math.random() * 4 + 3}px`,
-                height: `${Math.random() * 4 + 3}px`,
-                x: `${Math.random() * 100}vw`,
-                y: `${Math.random() * 100}vh`,
+                width: `${3 + (i % 4)}px`,
+                height: `${3 + (i % 4)}px`,
+                x: `${(i * 10) % 100}vw`,
+                y: `${(i * 10) % 100}vh`,
                 opacity: 0.2,
               }}
               animate={{
-                x: [`${Math.random() * 100}vw`, `${Math.random() * 100}vw`],
-                y: [`${Math.random() * 100}vh`, `${Math.random() * 100}vh`],
+                x: [`${(i * 10) % 100}vw`, `${(i * 10 + 50) % 100}vw`],
+                y: [`${(i * 10) % 100}vh`, `${(i * 10 + 50) % 100}vh`],
                 opacity: [0.2, 0.3, 0.2],
               }}
               transition={{
-                duration: Math.random() * 30 + 20,
+                duration: 20 + i * 2,
                 repeat: Number.POSITIVE_INFINITY,
                 ease: "linear",
               }}
             >
-              {/* Fewer connections with lower opacity */}
               {Array.from({ length: 2 }).map((_, j) => {
-                const targetNeuron = (i + j + 1) % 10
+                const targetNeuron = (i + j + 1) % 10;
                 return (
                   <motion.div
                     key={`connection-${i}-${j}`}
@@ -250,7 +279,7 @@ export default function Portfolio() {
                     }}
                     animate={{
                       opacity: [0.1, 0.15, 0.1],
-                      rotate: `${(targetNeuron * 24) % 360}deg`,
+                      rotate: `${targetNeuron * 36}deg`,
                     }}
                     transition={{
                       duration: 15,
@@ -259,7 +288,7 @@ export default function Portfolio() {
                       delay: j * 2,
                     }}
                   />
-                )
+                );
               })}
             </motion.div>
           ))}
@@ -305,7 +334,12 @@ export default function Portfolio() {
             preserveAspectRatio="xMidYMid slice"
           >
             <defs>
-              <pattern id="neural-net" width="200" height="200" patternUnits="userSpaceOnUse">
+              <pattern
+                id="neural-net"
+                width="200"
+                height="200"
+                patternUnits="userSpaceOnUse"
+              >
                 {/* Smaller, less visible neurons */}
                 <circle cx="20" cy="20" r="2" fill="#3b82f6" />
                 <circle cx="60" cy="40" r="2" fill="#3b82f6" />
@@ -323,26 +357,170 @@ export default function Portfolio() {
                 <circle cx="180" cy="180" r="2" fill="#3b82f6" />
 
                 {/* Less visible neural connections */}
-                <line x1="20" y1="20" x2="60" y2="40" stroke="#3b82f6" strokeWidth="0.5" strokeOpacity="0.3" />
-                <line x1="60" y1="40" x2="100" y2="30" stroke="#3b82f6" strokeWidth="0.5" strokeOpacity="0.3" />
-                <line x1="100" y1="30" x2="140" y2="60" stroke="#3b82f6" strokeWidth="0.5" strokeOpacity="0.3" />
-                <line x1="140" y1="60" x2="180" y2="20" stroke="#3b82f6" strokeWidth="0.5" strokeOpacity="0.3" />
-                <line x1="20" y1="20" x2="40" y2="80" stroke="#3b82f6" strokeWidth="0.5" strokeOpacity="0.3" />
-                <line x1="60" y1="40" x2="80" y2="100" stroke="#3b82f6" strokeWidth="0.5" strokeOpacity="0.3" />
-                <line x1="100" y1="30" x2="120" y2="120" stroke="#3b82f6" strokeWidth="0.5" strokeOpacity="0.3" />
-                <line x1="140" y1="60" x2="160" y2="140" stroke="#3b82f6" strokeWidth="0.5" strokeOpacity="0.3" />
-                <line x1="40" y1="80" x2="80" y2="100" stroke="#3b82f6" strokeWidth="0.5" strokeOpacity="0.3" />
-                <line x1="80" y1="100" x2="120" y2="120" stroke="#3b82f6" strokeWidth="0.5" strokeOpacity="0.3" />
-                <line x1="120" y1="120" x2="160" y2="140" stroke="#3b82f6" strokeWidth="0.5" strokeOpacity="0.3" />
-                <line x1="20" y1="160" x2="60" y2="180" stroke="#3b82f6" strokeWidth="0.5" strokeOpacity="0.3" />
-                <line x1="60" y1="180" x2="100" y2="160" stroke="#3b82f6" strokeWidth="0.5" strokeOpacity="0.3" />
-                <line x1="100" y1="160" x2="140" y2="140" stroke="#3b82f6" strokeWidth="0.5" strokeOpacity="0.3" />
-                <line x1="140" y1="140" x2="180" y2="180" stroke="#3b82f6" strokeWidth="0.5" strokeOpacity="0.3" />
+                <line
+                  x1="20"
+                  y1="20"
+                  x2="60"
+                  y2="40"
+                  stroke="#3b82f6"
+                  strokeWidth="0.5"
+                  strokeOpacity="0.3"
+                />
+                <line
+                  x1="60"
+                  y1="40"
+                  x2="100"
+                  y2="30"
+                  stroke="#3b82f6"
+                  strokeWidth="0.5"
+                  strokeOpacity="0.3"
+                />
+                <line
+                  x1="100"
+                  y1="30"
+                  x2="140"
+                  y2="60"
+                  stroke="#3b82f6"
+                  strokeWidth="0.5"
+                  strokeOpacity="0.3"
+                />
+                <line
+                  x1="140"
+                  y1="60"
+                  x2="180"
+                  y2="20"
+                  stroke="#3b82f6"
+                  strokeWidth="0.5"
+                  strokeOpacity="0.3"
+                />
+                <line
+                  x1="20"
+                  y1="20"
+                  x2="40"
+                  y2="80"
+                  stroke="#3b82f6"
+                  strokeWidth="0.5"
+                  strokeOpacity="0.3"
+                />
+                <line
+                  x1="60"
+                  y1="40"
+                  x2="80"
+                  y2="100"
+                  stroke="#3b82f6"
+                  strokeWidth="0.5"
+                  strokeOpacity="0.3"
+                />
+                <line
+                  x1="100"
+                  y1="30"
+                  x2="120"
+                  y2="120"
+                  stroke="#3b82f6"
+                  strokeWidth="0.5"
+                  strokeOpacity="0.3"
+                />
+                <line
+                  x1="140"
+                  y1="60"
+                  x2="160"
+                  y2="140"
+                  stroke="#3b82f6"
+                  strokeWidth="0.5"
+                  strokeOpacity="0.3"
+                />
+                <line
+                  x1="40"
+                  y1="80"
+                  x2="80"
+                  y2="100"
+                  stroke="#3b82f6"
+                  strokeWidth="0.5"
+                  strokeOpacity="0.3"
+                />
+                <line
+                  x1="80"
+                  y1="100"
+                  x2="120"
+                  y2="120"
+                  stroke="#3b82f6"
+                  strokeWidth="0.5"
+                  strokeOpacity="0.3"
+                />
+                <line
+                  x1="120"
+                  y1="120"
+                  x2="160"
+                  y2="140"
+                  stroke="#3b82f6"
+                  strokeWidth="0.5"
+                  strokeOpacity="0.3"
+                />
+                <line
+                  x1="20"
+                  y1="160"
+                  x2="60"
+                  y2="180"
+                  stroke="#3b82f6"
+                  strokeWidth="0.5"
+                  strokeOpacity="0.3"
+                />
+                <line
+                  x1="60"
+                  y1="180"
+                  x2="100"
+                  y2="160"
+                  stroke="#3b82f6"
+                  strokeWidth="0.5"
+                  strokeOpacity="0.3"
+                />
+                <line
+                  x1="100"
+                  y1="160"
+                  x2="140"
+                  y2="140"
+                  stroke="#3b82f6"
+                  strokeWidth="0.5"
+                  strokeOpacity="0.3"
+                />
+                <line
+                  x1="140"
+                  y1="140"
+                  x2="180"
+                  y2="180"
+                  stroke="#3b82f6"
+                  strokeWidth="0.5"
+                  strokeOpacity="0.3"
+                />
 
                 {/* Fewer cross connections */}
-                <line x1="20" y1="20" x2="100" y2="30" stroke="#3b82f6" strokeWidth="0.3" strokeOpacity="0.2" />
-                <line x1="60" y1="40" x2="140" y2="60" stroke="#3b82f6" strokeWidth="0.3" strokeOpacity="0.2" />
-                <line x1="40" y1="80" x2="120" y2="120" stroke="#3b82f6" strokeWidth="0.3" strokeOpacity="0.2" />
+                <line
+                  x1="20"
+                  y1="20"
+                  x2="100"
+                  y2="30"
+                  stroke="#3b82f6"
+                  strokeWidth="0.3"
+                  strokeOpacity="0.2"
+                />
+                <line
+                  x1="60"
+                  y1="40"
+                  x2="140"
+                  y2="60"
+                  stroke="#3b82f6"
+                  strokeWidth="0.3"
+                  strokeOpacity="0.2"
+                />
+                <line
+                  x1="40"
+                  y1="80"
+                  x2="120"
+                  y2="120"
+                  stroke="#3b82f6"
+                  strokeWidth="0.3"
+                  strokeOpacity="0.2"
+                />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#neural-net)" />
@@ -397,7 +575,11 @@ export default function Portfolio() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
-            <Link href="https://github.com/johncortes117" target="_blank" rel="noopener noreferrer">
+            <Link
+              href="https://github.com/johncortes117"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button
                 variant="ghost"
                 size="icon"
@@ -408,7 +590,11 @@ export default function Portfolio() {
                 <span className="sr-only">GitHub</span>
               </Button>
             </Link>
-            <Link href="https://linkedin.com/in/john-cortes-pozo" target="_blank" rel="noopener noreferrer">
+            <Link
+              href="https://linkedin.com/in/john-cortes-pozo"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button
                 variant="ghost"
                 size="icon"
@@ -441,7 +627,11 @@ export default function Portfolio() {
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
             >
-              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {mobileMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </Button>
           </div>
 
@@ -472,20 +662,40 @@ export default function Portfolio() {
                   </Link>
                 ))}
                 <div className="flex gap-4 pt-2 pl-4">
-                  <Link href="https://github.com/johncortes117" target="_blank" rel="noopener noreferrer">
-                    <Button variant="ghost" size="icon" className="text-gray-300 hover:text-blue-400">
+                  <Link
+                    href="https://github.com/johncortes117"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="text-gray-300 hover:text-blue-400"
+                    >
                       <Github className="h-5 w-5" />
                       <span className="sr-only">GitHub</span>
                     </Button>
                   </Link>
-                  <Link href="https://linkedin.com/in/john-cortes-pozo" target="_blank" rel="noopener noreferrer">
-                    <Button variant="ghost" size="icon" className="text-gray-300 hover:text-blue-400">
+                  <Link
+                    href="https://linkedin.com/in/john-cortes-pozo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="text-gray-300 hover:text-blue-400"
+                    >
                       <Linkedin className="h-5 w-5" />
                       <span className="sr-only">LinkedIn</span>
                     </Button>
                   </Link>
                   <Link href="mailto:stevencortespozo@gmail.com">
-                    <Button variant="ghost" size="icon" className="text-gray-300 hover:text-blue-400">
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="text-gray-300 hover:text-blue-400"
+                    >
                       <Mail className="h-5 w-5" />
                       <span className="sr-only">Email</span>
                     </Button>
@@ -499,7 +709,11 @@ export default function Portfolio() {
 
       <main className="relative z-10 pt-16">
         {/* Hero Section - About Me */}
-        <section id="inicio" ref={heroRef} className="min-h-screen flex items-center relative overflow-hidden pb-32">
+        <section
+          id="inicio"
+          ref={heroRef}
+          className="min-h-screen flex items-center relative overflow-hidden pb-32"
+        >
           <motion.div className="absolute inset-0 z-0" style={{ y }}>
             <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-blue-600/10 blur-3xl"></div>
             <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-blue-400/10 blur-3xl"></div>
@@ -519,8 +733,7 @@ export default function Portfolio() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                  >
-                  </motion.div>
+                  ></motion.div>
 
                   <motion.h1
                     className="text-5xl md:text-7xl font-bold leading-tight"
@@ -541,18 +754,25 @@ export default function Portfolio() {
                     transition={{ duration: 0.5, delay: 0.6 }}
                   >
                     <p>
-                      I am a Computer Engineering student with a strong focus on Artificial Intelligence, Machine
-                      Learning, and Mathematics. I am passionate not only about learning these subjects but also about
-                      applying them, researching, and understanding how AI can transform the way we solve problems.
+                      I am a Computer Engineering student with a strong focus on
+                      Artificial Intelligence, Machine Learning, and
+                      Mathematics. I am passionate not only about learning these
+                      subjects but also about applying them, researching, and
+                      understanding how AI can transform the way we solve
+                      problems.
                     </p>
                     <p>
-                      Additionally, I enjoy developing software and constantly challenge myself with projects that
-                      contribute to my professional growth.
+                      Additionally, I enjoy developing software and constantly
+                      challenge myself with projects that contribute to my
+                      professional growth.
                     </p>
                     <p>
-                      <span className="text-blue-400 font-semibold">Fun fact:</span> My fascination with AI is so great
-                      that, in my free time, I follow the latest news and advances in the field to stay up-to-date and
-                      continue to be inspired.
+                      <span className="text-blue-400 font-semibold">
+                        Fun fact:
+                      </span>{" "}
+                      My fascination with AI is so great that, in my free time,
+                      I follow the latest news and advances in the field to stay
+                      up-to-date and continue to be inspired.
                     </p>
                   </motion.div>
 
@@ -564,9 +784,13 @@ export default function Portfolio() {
                   >
                     <Button className="bg-blue-600 hover:bg-blue-700 text-white group relative overflow-hidden">
                       <span className="absolute right-full w-12 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:translate-x-96 ease"></span>
-                      Download CV <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      Download CV{" "}
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Button>
-                    <Button variant="outline" className="border-blue-600 text-blue-400 hover:bg-blue-900/20 group">
+                    <Button
+                      variant="outline"
+                      className="border-blue-600 text-blue-400 hover:bg-blue-900/20 group"
+                    >
                       View Projects{" "}
                       <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Button>
@@ -578,27 +802,40 @@ export default function Portfolio() {
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.5, delay: 1 }}
                   >
-                    <h4 className="text-xl font-semibold text-blue-400 mb-3">Main Focus</h4>
+                    <h4 className="text-xl font-semibold text-blue-400 mb-3">
+                      Main Focus
+                    </h4>
                     <div className="flex flex-wrap gap-3">
-                      {["Data Science", "Machine Learning", "Artificial Intelligence", "Mathematics"].map(
-                        (focus, index) => (
-                          <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.3, delay: 0.1 * index + 1 }}
-                            className="bg-blue-900/30 border border-blue-500/30 rounded-lg px-4 py-2 flex items-center"
-                          >
-                            <div className="mr-2 bg-blue-500/20 p-1.5 rounded-full">
-                              {index === 0 && <Database className="h-4 w-4 text-blue-400" />}
-                              {index === 1 && <Code className="h-4 w-4 text-blue-400" />}
-                              {index === 2 && <Brain className="h-4 w-4 text-blue-400" />}
-                              {index === 3 && <BarChart className="h-4 w-4 text-blue-400" />}
-                            </div>
-                            <span className="text-white text-sm">{focus}</span>
-                          </motion.div>
-                        ),
-                      )}
+                      {[
+                        "Data Science",
+                        "Machine Learning",
+                        "Artificial Intelligence",
+                        "Mathematics",
+                      ].map((focus, index) => (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.3, delay: 0.1 * index + 1 }}
+                          className="bg-blue-900/30 border border-blue-500/30 rounded-lg px-4 py-2 flex items-center"
+                        >
+                          <div className="mr-2 bg-blue-500/20 p-1.5 rounded-full">
+                            {index === 0 && (
+                              <Database className="h-4 w-4 text-blue-400" />
+                            )}
+                            {index === 1 && (
+                              <Code className="h-4 w-4 text-blue-400" />
+                            )}
+                            {index === 2 && (
+                              <Brain className="h-4 w-4 text-blue-400" />
+                            )}
+                            {index === 3 && (
+                              <BarChart className="h-4 w-4 text-blue-400" />
+                            )}
+                          </div>
+                          <span className="text-white text-sm">{focus}</span>
+                        </motion.div>
+                      ))}
                     </div>
                   </motion.div>
                 </motion.div>
@@ -665,7 +902,11 @@ export default function Portfolio() {
                           className="absolute w-8 h-8 rounded-full bg-blue-600/20 backdrop-blur-sm border border-blue-500/30 flex items-center justify-center"
                           style={{ top: "10%", right: "0%" }}
                           animate={{ rotate: 360 }}
-                          transition={{ duration: 10, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+                          transition={{
+                            duration: 10,
+                            repeat: Number.POSITIVE_INFINITY,
+                            ease: "linear",
+                          }}
                         >
                           <Code className="h-4 w-4 text-blue-400" />
                         </motion.div>
@@ -674,7 +915,11 @@ export default function Portfolio() {
                           className="absolute w-10 h-10 rounded-full bg-blue-600/20 backdrop-blur-sm border border-blue-500/30 flex items-center justify-center"
                           style={{ bottom: "15%", left: "5%" }}
                           animate={{ rotate: -360 }}
-                          transition={{ duration: 15, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+                          transition={{
+                            duration: 15,
+                            repeat: Number.POSITIVE_INFINITY,
+                            ease: "linear",
+                          }}
                         >
                           <Brain className="h-5 w-5 text-blue-400" />
                         </motion.div>
@@ -683,7 +928,11 @@ export default function Portfolio() {
                           className="absolute w-6 h-6 rounded-full bg-blue-600/20 backdrop-blur-sm border border-blue-500/30 flex items-center justify-center"
                           style={{ top: "20%", left: "10%" }}
                           animate={{ rotate: 360 }}
-                          transition={{ duration: 12, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+                          transition={{
+                            duration: 12,
+                            repeat: Number.POSITIVE_INFINITY,
+                            ease: "linear",
+                          }}
                         >
                           <Database className="h-3 w-3 text-blue-400" />
                         </motion.div>
@@ -732,13 +981,18 @@ export default function Portfolio() {
               className="mb-16 text-center"
             >
               <div className="inline-block mb-2">
-                <Badge variant="outline" className="px-3 py-1 text-sm border-blue-500/50 bg-blue-500/5 text-blue-400">
+                <Badge
+                  variant="outline"
+                  className="px-3 py-1 text-sm border-blue-500/50 bg-blue-500/5 text-blue-400"
+                >
                   <Code className="mr-1 h-3 w-3" /> Skills & Experience
                 </Badge>
               </div>
               <h2 className="text-4xl md:text-5xl font-bold mb-4">
                 My{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">Skills</span>{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
+                  Skills
+                </span>{" "}
                 & Experience
               </h2>
               <div className="w-20 h-1 bg-gradient-to-r from-blue-400 to-blue-600 mx-auto"></div>
@@ -774,18 +1028,22 @@ export default function Portfolio() {
                         <div className="bg-blue-900/60 p-2.5 rounded-lg mr-3 border border-blue-500/30">
                           <Database className="h-5 w-5 text-blue-400" />
                         </div>
-                        <h4 className="text-xl font-semibold text-blue-300">Data Science & ML Tools</h4>
+                        <h4 className="text-xl font-semibold text-blue-300">
+                          Data Science & ML Tools
+                        </h4>
                       </div>
 
                       <div className="flex flex-wrap gap-2 relative z-10">
-                        {["Pandas", "NumPy", "Scikit-learn", "TensorFlow"].map((tech, i) => (
-                          <Badge
-                            key={i}
-                            className="bg-blue-900/70 hover:bg-blue-800/90 text-blue-100 border border-blue-500/40 px-3 py-1.5 text-sm transition-all duration-300 hover:scale-105"
-                          >
-                            {tech}
-                          </Badge>
-                        ))}
+                        {["Pandas", "NumPy", "Scikit-learn", "TensorFlow"].map(
+                          (tech, i) => (
+                            <Badge
+                              key={i}
+                              className="bg-blue-900/70 hover:bg-blue-800/90 text-blue-100 border border-blue-500/40 px-3 py-1.5 text-sm transition-all duration-300 hover:scale-105"
+                            >
+                              {tech}
+                            </Badge>
+                          )
+                        )}
                       </div>
                     </div>
                   </div>
@@ -809,20 +1067,27 @@ export default function Portfolio() {
                         <div className="bg-blue-900/60 p-2.5 rounded-lg mr-3 border border-blue-500/30">
                           <Brain className="h-5 w-5 text-blue-400" />
                         </div>
-                        <h4 className="text-xl font-semibold text-blue-300">AI Tools</h4>
+                        <h4 className="text-xl font-semibold text-blue-300">
+                          AI Tools
+                        </h4>
                       </div>
 
                       <div className="flex flex-wrap gap-2 relative z-10">
-                        {["Jupyter Notebooks", "Google Colab", "LangChain", "OpenAI API", "Azure AI", "IBM Watson"].map(
-                          (tech, i) => (
-                            <Badge
-                              key={i}
-                              className="bg-blue-900/70 hover:bg-blue-800/90 text-blue-100 border border-blue-500/40 px-3 py-1.5 text-sm transition-all duration-300 hover:scale-105"
-                            >
-                              {tech}
-                            </Badge>
-                          ),
-                        )}
+                        {[
+                          "Jupyter Notebooks",
+                          "Google Colab",
+                          "LangChain",
+                          "OpenAI API",
+                          "Azure AI",
+                          "IBM Watson",
+                        ].map((tech, i) => (
+                          <Badge
+                            key={i}
+                            className="bg-blue-900/70 hover:bg-blue-800/90 text-blue-100 border border-blue-500/40 px-3 py-1.5 text-sm transition-all duration-300 hover:scale-105"
+                          >
+                            {tech}
+                          </Badge>
+                        ))}
                       </div>
                     </div>
                   </div>
@@ -846,7 +1111,9 @@ export default function Portfolio() {
                         <div className="bg-blue-900/60 p-2.5 rounded-lg mr-3 border border-blue-500/30">
                           <Code className="h-5 w-5 text-blue-400" />
                         </div>
-                        <h4 className="text-xl font-semibold text-blue-300">Backend & API Development</h4>
+                        <h4 className="text-xl font-semibold text-blue-300">
+                          Backend & API Development
+                        </h4>
                       </div>
 
                       <div className="flex flex-wrap gap-2 relative z-10">
@@ -881,11 +1148,20 @@ export default function Portfolio() {
                         <div className="bg-blue-900/60 p-2.5 rounded-lg mr-3 border border-blue-500/30">
                           <Sparkles className="h-5 w-5 text-blue-400" />
                         </div>
-                        <h4 className="text-xl font-semibold text-blue-300">Others</h4>
+                        <h4 className="text-xl font-semibold text-blue-300">
+                          Others
+                        </h4>
                       </div>
 
                       <div className="flex flex-wrap gap-2 relative z-10">
-                        {["Git & GitHub", "Linux", "VS Code", "Anaconda", "Docker", "Figma"].map((tech, i) => (
+                        {[
+                          "Git & GitHub",
+                          "Linux",
+                          "VS Code",
+                          "Anaconda",
+                          "Docker",
+                          "Figma",
+                        ].map((tech, i) => (
                           <Badge
                             key={i}
                             className="bg-blue-900/70 hover:bg-blue-800/90 text-blue-100 border border-blue-500/40 px-3 py-1.5 text-sm transition-all duration-300 hover:scale-105"
@@ -917,21 +1193,27 @@ export default function Portfolio() {
                       <div className="bg-blue-900/60 p-2.5 rounded-lg mr-3 border border-blue-500/30">
                         <BookOpen className="h-5 w-5 text-blue-400" />
                       </div>
-                      <h4 className="text-xl font-semibold text-blue-300">Soft Skills</h4>
+                      <h4 className="text-xl font-semibold text-blue-300">
+                        Soft Skills
+                      </h4>
                     </div>
 
                     <div className="flex flex-wrap gap-3 relative z-10">
-                      {["Effective Communication", "Leadership", "Team Collaboration", "Teaching", "Proactivity"].map(
-                        (skill, i) => (
-                          <Badge
-                            key={i}
-                            variant="outline"
-                            className="border-blue-500/40 text-blue-300 bg-blue-900/30 px-4 py-2 text-sm transition-all duration-300 hover:scale-105 hover:bg-blue-900/50"
-                          >
-                            {skill}
-                          </Badge>
-                        ),
-                      )}
+                      {[
+                        "Effective Communication",
+                        "Leadership",
+                        "Team Collaboration",
+                        "Teaching",
+                        "Proactivity",
+                      ].map((skill, i) => (
+                        <Badge
+                          key={i}
+                          variant="outline"
+                          className="border-blue-500/40 text-blue-300 bg-blue-900/30 px-4 py-2 text-sm transition-all duration-300 hover:scale-105 hover:bg-blue-900/50"
+                        >
+                          {skill}
+                        </Badge>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -949,7 +1231,9 @@ export default function Portfolio() {
               >
                 <div className="flex items-center gap-3 mb-6">
                   <Briefcase className="h-6 w-6 text-blue-400" />
-                  <h3 className="text-2xl font-bold text-blue-400">Experience</h3>
+                  <h3 className="text-2xl font-bold text-blue-400">
+                    Experience
+                  </h3>
                 </div>
 
                 <div className="relative pl-8 before:content-[''] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-px before:bg-gradient-to-b before:from-blue-600 before:via-blue-400 before:to-blue-600/0">
@@ -957,10 +1241,15 @@ export default function Portfolio() {
                   <div className="absolute left-0 top-0 w-4 h-4 rounded-full bg-blue-500/30 -translate-x-1/2 animate-ping"></div>
 
                   <div className="mb-8">
-                    <h4 className="text-xl font-bold text-white">Junior AI Developer</h4>
-                    <p className="text-blue-300 text-sm mb-2">Qikstarts AI • March 2025 - Present</p>
+                    <h4 className="text-xl font-bold text-white">
+                      Junior AI Developer
+                    </h4>
+                    <p className="text-blue-300 text-sm mb-2">
+                      Qikstarts AI • March 2025 - Present
+                    </p>
                     <p className="text-gray-300">
-                      Working on AI solutions and implementing machine learning models for various client projects.
+                      Working on AI solutions and implementing machine learning
+                      models for various client projects.
                     </p>
                   </div>
                 </div>
@@ -975,30 +1264,43 @@ export default function Portfolio() {
               >
                 <div className="flex items-center gap-3 mb-6">
                   <GraduationCap className="h-6 w-6 text-blue-400" />
-                  <h3 className="text-2xl font-bold text-blue-400">Education</h3>
+                  <h3 className="text-2xl font-bold text-blue-400">
+                    Education
+                  </h3>
                 </div>
 
                 <div className="space-y-8">
                   <div className="relative pl-8 before:content-[''] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-px before:bg-gradient-to-b before:from-blue-600 before:via-blue-400 before:to-blue-600/30">
                     <div className="absolute left-0 top-0 w-2 h-2 rounded-full bg-blue-500 -translate-x-1/2"></div>
-                    <h4 className="text-xl font-bold text-white">Computer Science Engineering</h4>
+                    <h4 className="text-xl font-bold text-white">
+                      Computer Science Engineering
+                    </h4>
                     <p className="text-blue-300 text-sm mb-2">
-                      State Polytechnic University of Carchi • May 2022 - Present
+                      State Polytechnic University of Carchi • May 2022 -
+                      Present
                     </p>
                     <p className="text-gray-300">Tulcan, Ecuador</p>
                   </div>
 
                   <div className="relative pl-8 before:content-[''] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-px before:bg-gradient-to-b before:from-blue-600/30 before:via-blue-400/30 before:to-blue-600/10">
                     <div className="absolute left-0 top-0 w-2 h-2 rounded-full bg-blue-500 -translate-x-1/2"></div>
-                    <h4 className="text-xl font-bold text-white">Self-Study & Certifications</h4>
-                    <p className="text-blue-300 text-sm mb-2">Platzi • November 2023 - Present</p>
+                    <h4 className="text-xl font-bold text-white">
+                      Self-Study & Certifications
+                    </h4>
+                    <p className="text-blue-300 text-sm mb-2">
+                      Platzi • November 2023 - Present
+                    </p>
                     <p className="text-gray-300">Remote</p>
                   </div>
 
                   <div className="relative pl-8 before:content-[''] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-px before:bg-gradient-to-b before:from-blue-600/10 before:via-blue-400/10 before:to-transparent">
                     <div className="absolute left-0 top-0 w-2 h-2 rounded-full bg-blue-500 -translate-x-1/2"></div>
-                    <h4 className="text-xl font-bold text-white">IBM Certifications</h4>
-                    <p className="text-blue-300 text-sm mb-2">IBM • July 2024</p>
+                    <h4 className="text-xl font-bold text-white">
+                      IBM Certifications
+                    </h4>
+                    <p className="text-blue-300 text-sm mb-2">
+                      IBM • July 2024
+                    </p>
                     <p className="text-gray-300">Remote</p>
                   </div>
                 </div>
@@ -1015,20 +1317,25 @@ export default function Portfolio() {
             >
               <div className="flex items-center gap-3 mb-6">
                 <BookOpen className="h-6 w-6 text-blue-400" />
-                <h3 className="text-2xl font-bold text-blue-400">Extracurricular Activities</h3>
+                <h3 className="text-2xl font-bold text-blue-400">
+                  Extracurricular Activities
+                </h3>
               </div>
 
               <div className="grid md:grid-cols-3 gap-6">
                 {[
                   {
                     title: "President",
-                    organization: "Computational Mathematical Optimization Club",
-                    description: "Leading the UPEC's Computational Mathematical Optimization Club.",
+                    organization:
+                      "Computational Mathematical Optimization Club",
+                    description:
+                      "Leading the UPEC's Computational Mathematical Optimization Club.",
                   },
                   {
                     title: "Active Member",
                     organization: "Programming Club",
-                    description: "Participating in UPEC's Programming Club activities and competitions.",
+                    description:
+                      "Participating in UPEC's Programming Club activities and competitions.",
                   },
                   {
                     title: "Research Assistant",
@@ -1048,8 +1355,12 @@ export default function Portfolio() {
                     <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600/30 to-blue-400/30 rounded-lg blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
                     <Card className="relative h-full bg-gradient-to-br from-blue-900/30 to-black border-blue-500/20 group hover:border-blue-500/40 transition-all duration-300">
                       <CardContent className="p-6">
-                        <h4 className="text-xl font-bold text-blue-400 mb-1">{activity.title}</h4>
-                        <p className="text-white mb-3">{activity.organization}</p>
+                        <h4 className="text-xl font-bold text-blue-400 mb-1">
+                          {activity.title}
+                        </h4>
+                        <p className="text-white mb-3">
+                          {activity.organization}
+                        </p>
                         <p className="text-gray-300">{activity.description}</p>
                       </CardContent>
                     </Card>
@@ -1073,7 +1384,10 @@ export default function Portfolio() {
               className="mb-16 text-center"
             >
               <div className="inline-block mb-2">
-                <Badge variant="outline" className="px-3 py-1 text-sm border-blue-500/50 bg-blue-500/5 text-blue-400">
+                <Badge
+                  variant="outline"
+                  className="px-3 py-1 text-sm border-blue-500/50 bg-blue-500/5 text-blue-400"
+                >
                   <Code className="mr-1 h-3 w-3" /> Projects
                 </Badge>
               </div>
@@ -1086,23 +1400,36 @@ export default function Portfolio() {
               </h2>
               <div className="w-20 h-1 bg-gradient-to-r from-blue-400 to-blue-600 mx-auto mb-6"></div>
               <p className="max-w-2xl mx-auto text-gray-300">
-                A selection of my most innovative projects in AI, Machine Learning, and Software Development.
+                A selection of my most innovative projects in AI, Machine
+                Learning, and Software Development.
               </p>
             </motion.div>
 
             <Tabs defaultValue="all" className="w-full mb-12">
               <div className="flex justify-center">
                 <TabsList className="bg-blue-950/30 border border-blue-500/20 p-1">
-                  <TabsTrigger value="all" className="data-[state=active]:bg-blue-600">
+                  <TabsTrigger
+                    value="all"
+                    className="data-[state=active]:bg-blue-600"
+                  >
                     All
                   </TabsTrigger>
-                  <TabsTrigger value="ai" className="data-[state=active]:bg-blue-600">
+                  <TabsTrigger
+                    value="ai"
+                    className="data-[state=active]:bg-blue-600"
+                  >
                     AI/ML
                   </TabsTrigger>
-                  <TabsTrigger value="web" className="data-[state=active]:bg-blue-600">
+                  <TabsTrigger
+                    value="web"
+                    className="data-[state=active]:bg-blue-600"
+                  >
                     Web/Mobile
                   </TabsTrigger>
-                  <TabsTrigger value="other" className="data-[state=active]:bg-blue-600">
+                  <TabsTrigger
+                    value="other"
+                    className="data-[state=active]:bg-blue-600"
+                  >
                     Other
                   </TabsTrigger>
                 </TabsList>
@@ -1116,7 +1443,8 @@ export default function Portfolio() {
                       description:
                         "An AI assistant based on Llama LLM designed to help young people in Latin America build their educational and professional future.",
                       tags: ["Python", "FastAPI", "AI", "LLM"],
-                      image: "/placeholder.svg?height=200&width=400&text=AgenteIAma",
+                      image:
+                        "/placeholder.svg?height=200&width=400&text=AgenteIAma",
                       link: "https://github.com/johncortes117/Agente-IAma",
                       category: "ai",
                     },
@@ -1124,8 +1452,16 @@ export default function Portfolio() {
                       title: "Comprandito",
                       description:
                         "Mobile and web application with an AI assistant that helps users in Tulcán find the best products and stores for their purchases.",
-                      tags: ["Flutter", "Dart", "Node.js", "TypeScript", "AI", "LLM"],
-                      image: "/placeholder.svg?height=200&width=400&text=Comprandito",
+                      tags: [
+                        "Flutter",
+                        "Dart",
+                        "Node.js",
+                        "TypeScript",
+                        "AI",
+                        "LLM",
+                      ],
+                      image:
+                        "/placeholder.svg?height=200&width=400&text=Comprandito",
                       link: "https://v0-modern-landing-page-eosin-one.vercel.app/",
                       category: "web",
                     },
@@ -1134,7 +1470,8 @@ export default function Portfolio() {
                       description:
                         "Portal to centralize and manage the centers and projects of UPEC's research department.",
                       tags: ["Python", "Django", "HTML", "CSS", "JavaScript"],
-                      image: "/placeholder.svg?height=200&width=400&text=Portal+CITT",
+                      image:
+                        "/placeholder.svg?height=200&width=400&text=Portal+CITT",
                       link: "https://github.com/johncortes117/portal-citt",
                       category: "web",
                     },
@@ -1152,7 +1489,8 @@ export default function Portfolio() {
                       description:
                         "An AI assistant based on Llama LLM designed to help young people in Latin America build their educational and professional future.",
                       tags: ["Python", "FastAPI", "AI", "LLM"],
-                      image: "/placeholder.svg?height=200&width=400&text=AgenteIAma",
+                      image:
+                        "/placeholder.svg?height=200&width=400&text=AgenteIAma",
                       link: "https://github.com/johncortes117/Agente-IAma",
                       category: "ai",
                     },
@@ -1169,8 +1507,16 @@ export default function Portfolio() {
                       title: "Comprandito",
                       description:
                         "Mobile and web application with an AI assistant that helps users in Tulcán find the best products and stores for their purchases.",
-                      tags: ["Flutter", "Dart", "Node.js", "TypeScript", "AI", "LLM"],
-                      image: "/placeholder.svg?height=200&width=400&text=Comprandito",
+                      tags: [
+                        "Flutter",
+                        "Dart",
+                        "Node.js",
+                        "TypeScript",
+                        "AI",
+                        "LLM",
+                      ],
+                      image:
+                        "/placeholder.svg?height=200&width=400&text=Comprandito",
                       link: "https://v0-modern-landing-page-eosin-one.vercel.app/",
                       category: "web",
                     },
@@ -1179,7 +1525,8 @@ export default function Portfolio() {
                       description:
                         "Portal to centralize and manage the centers and projects of UPEC's research department.",
                       tags: ["Python", "Django", "HTML", "CSS", "JavaScript"],
-                      image: "/placeholder.svg?height=200&width=400&text=Portal+CITT",
+                      image:
+                        "/placeholder.svg?height=200&width=400&text=Portal+CITT",
                       link: "https://github.com/johncortes117/portal-citt",
                       category: "web",
                     },
@@ -1193,7 +1540,9 @@ export default function Portfolio() {
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {/* No projects in this category yet */}
                   <div className="col-span-full text-center py-12">
-                    <p className="text-gray-400">No projects in this category yet. Stay tuned!</p>
+                    <p className="text-gray-400">
+                      No projects in this category yet. Stay tuned!
+                    </p>
                   </div>
                 </div>
               </TabsContent>
@@ -1202,7 +1551,8 @@ export default function Portfolio() {
             <div className="text-center">
               <Button className="bg-blue-600 hover:bg-blue-700 text-white group relative overflow-hidden">
                 <span className="absolute right-full w-12 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:translate-x-96 ease"></span>
-                View All Projects <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                View All Projects{" "}
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
             </div>
           </div>
@@ -1226,7 +1576,10 @@ export default function Portfolio() {
               className="mb-16 text-center"
             >
               <div className="inline-block mb-2">
-                <Badge variant="outline" className="px-3 py-1 text-sm border-blue-500/50 bg-blue-500/5 text-blue-400">
+                <Badge
+                  variant="outline"
+                  className="px-3 py-1 text-sm border-blue-500/50 bg-blue-500/5 text-blue-400"
+                >
                   <Award className="mr-1 h-3 w-3" /> Achievements
                 </Badge>
               </div>
@@ -1269,13 +1622,17 @@ export default function Portfolio() {
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
                         <div className="min-w-[60px] h-16 bg-blue-900/30 border border-blue-500/30 rounded flex items-center justify-center">
-                          <span className="text-blue-400 font-mono">{achievement.year}</span>
+                          <span className="text-blue-400 font-mono">
+                            {achievement.year}
+                          </span>
                         </div>
                         <div>
                           <h4 className="text-xl font-bold group-hover:text-blue-400 transition-colors">
                             {achievement.title}
                           </h4>
-                          <p className="text-gray-300 mt-2">{achievement.description}</p>
+                          <p className="text-gray-300 mt-2">
+                            {achievement.description}
+                          </p>
                           <a
                             href={achievement.link}
                             target="_blank"
@@ -1307,7 +1664,10 @@ export default function Portfolio() {
               className="mb-16 text-center"
             >
               <div className="inline-block mb-2">
-                <Badge variant="outline" className="px-3 py-1 text-sm border-blue-500/50 bg-blue-500/5 text-blue-400">
+                <Badge
+                  variant="outline"
+                  className="px-3 py-1 text-sm border-blue-500/50 bg-blue-500/5 text-blue-400"
+                >
                   <FileText className="mr-1 h-3 w-3" /> Education
                 </Badge>
               </div>
@@ -1332,12 +1692,14 @@ export default function Portfolio() {
                     "Comprehensive course on mobile application development fundamentals and best practices.",
                 },
                 {
-                  title: "Data Science Environment with Jupyter Notebooks and Anaconda",
+                  title:
+                    "Data Science Environment with Jupyter Notebooks and Anaconda",
                   issuer: "Platzi",
                   date: "November 2024",
                   link: "https://platzi.com/p/john_cortes/curso/2434-jupyter-notebook/diploma/detalle/",
                   icon: <Database className="h-6 w-6 text-blue-400" />,
-                  description: "Setting up and using Jupyter Notebooks and Anaconda for data science projects.",
+                  description:
+                    "Setting up and using Jupyter Notebooks and Anaconda for data science projects.",
                 },
                 {
                   title: "Introduction to Terminal and Command Line",
@@ -1345,7 +1707,8 @@ export default function Portfolio() {
                   date: "November 2024",
                   link: "https://platzi.com/p/john_cortes/curso/2292-terminal/diploma/detalle/",
                   icon: <Code className="h-6 w-6 text-blue-400" />,
-                  description: "Fundamentals of terminal usage and command line operations for developers.",
+                  description:
+                    "Fundamentals of terminal usage and command line operations for developers.",
                 },
                 {
                   title: "Professional Git and GitHub",
@@ -1353,7 +1716,8 @@ export default function Portfolio() {
                   date: "October 2024",
                   link: "https://platzi.com/p/john_cortes/curso/1557-course/diploma/detalle/",
                   icon: <Code className="h-6 w-6 text-blue-400" />,
-                  description: "Advanced version control with Git and collaboration using GitHub.",
+                  description:
+                    "Advanced version control with Git and collaboration using GitHub.",
                 },
                 {
                   title: "Artificial Intelligence Fundamentals",
@@ -1361,7 +1725,8 @@ export default function Portfolio() {
                   date: "August 2024",
                   link: "https://www.credly.com/badges/749f04c6-12bd-45c1-9e0a-b061c3226c4a/linked_in_profile",
                   icon: <Brain className="h-6 w-6 text-blue-400" />,
-                  description: "Core concepts and applications of artificial intelligence and machine learning.",
+                  description:
+                    "Core concepts and applications of artificial intelligence and machine learning.",
                 },
                 {
                   title: "Database Fundamentals",
@@ -1369,7 +1734,8 @@ export default function Portfolio() {
                   date: "July 2024",
                   link: "https://platzi.com/p/john_cortes/curso/1566-fundamentos-db/diploma/detalle/",
                   icon: <Database className="h-6 w-6 text-blue-400" />,
-                  description: "Essential concepts of database design, management, and optimization.",
+                  description:
+                    "Essential concepts of database design, management, and optimization.",
                 },
               ].map((cert, index) => (
                 <motion.div
@@ -1400,7 +1766,8 @@ export default function Portfolio() {
                           <span className="text-gray-400">{cert.date}</span>
                         </div>
                         <div className="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors text-sm">
-                          View Details <ExternalLink className="ml-1 h-3.5 w-3.5" />
+                          View Details{" "}
+                          <ExternalLink className="ml-1 h-3.5 w-3.5" />
                         </div>
                       </CardContent>
                     </Card>
@@ -1429,7 +1796,10 @@ export default function Portfolio() {
               className="mb-16 text-center"
             >
               <div className="inline-block mb-2">
-                <Badge variant="outline" className="px-3 py-1 text-sm border-blue-500/50 bg-blue-500/5 text-blue-400">
+                <Badge
+                  variant="outline"
+                  className="px-3 py-1 text-sm border-blue-500/50 bg-blue-500/5 text-blue-400"
+                >
                   <Send className="mr-1 h-3 w-3" /> Contact
                 </Badge>
               </div>
@@ -1441,7 +1811,8 @@ export default function Portfolio() {
               </h2>
               <div className="w-20 h-1 bg-gradient-to-r from-blue-400 to-blue-600 mx-auto mb-6"></div>
               <p className="max-w-2xl mx-auto text-gray-300">
-                Interested in collaborating or have any questions? Don't hesitate to reach out!
+                Interested in collaborating or have any questions? Don't
+                hesitate to reach out!
               </p>
             </motion.div>
 
@@ -1457,7 +1828,9 @@ export default function Portfolio() {
                         transition={{ duration: 0.5 }}
                         viewport={{ once: true }}
                       >
-                        <h3 className="text-2xl font-bold mb-6 text-blue-400">Contact Information</h3>
+                        <h3 className="text-2xl font-bold mb-6 text-blue-400">
+                          Contact Information
+                        </h3>
 
                         <div className="space-y-6 mb-8">
                           <div className="flex items-center gap-4">
@@ -1511,9 +1884,12 @@ export default function Portfolio() {
                         </div>
 
                         <div className="bg-blue-950/30 p-6 rounded-lg border border-blue-500/20">
-                          <h4 className="text-lg font-bold mb-3 text-blue-300">Ready to Collaborate?</h4>
+                          <h4 className="text-lg font-bold mb-3 text-blue-300">
+                            Ready to Collaborate?
+                          </h4>
                           <p className="text-gray-300 mb-4">
-                            I'm available for freelance projects, collaborations, and learning opportunities in AI and
+                            I'm available for freelance projects,
+                            collaborations, and learning opportunities in AI and
                             software development.
                           </p>
                           <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white group relative overflow-hidden">
@@ -1530,12 +1906,20 @@ export default function Portfolio() {
                         transition={{ duration: 0.5, delay: 0.2 }}
                         viewport={{ once: true }}
                       >
-                        <h3 className="text-2xl font-bold mb-6 text-blue-400">Send Me a Message</h3>
+                        <h3 className="text-2xl font-bold mb-6 text-blue-400">
+                          Send Me a Message
+                        </h3>
 
-                        <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+                        <form
+                          className="space-y-4"
+                          onSubmit={(e) => e.preventDefault()}
+                        >
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                              <label htmlFor="name" className="text-sm text-gray-400 mb-1 block">
+                              <label
+                                htmlFor="name"
+                                className="text-sm text-gray-400 mb-1 block"
+                              >
                                 Name
                               </label>
                               <input
@@ -1547,7 +1931,10 @@ export default function Portfolio() {
                               />
                             </div>
                             <div>
-                              <label htmlFor="email" className="text-sm text-gray-400 mb-1 block">
+                              <label
+                                htmlFor="email"
+                                className="text-sm text-gray-400 mb-1 block"
+                              >
                                 Email
                               </label>
                               <input
@@ -1561,7 +1948,10 @@ export default function Portfolio() {
                           </div>
 
                           <div>
-                            <label htmlFor="subject" className="text-sm text-gray-400 mb-1 block">
+                            <label
+                              htmlFor="subject"
+                              className="text-sm text-gray-400 mb-1 block"
+                            >
                               Subject
                             </label>
                             <input
@@ -1574,7 +1964,10 @@ export default function Portfolio() {
                           </div>
 
                           <div>
-                            <label htmlFor="message" className="text-sm text-gray-400 mb-1 block">
+                            <label
+                              htmlFor="message"
+                              className="text-sm text-gray-400 mb-1 block"
+                            >
                               Message
                             </label>
                             <textarea
@@ -1634,20 +2027,40 @@ export default function Portfolio() {
             </motion.div>
 
             <div className="flex gap-4 mt-4 md:mt-0">
-              <Link href="https://github.com/johncortes117" target="_blank" rel="noopener noreferrer">
-                <Button variant="ghost" size="icon" className="text-gray-400 hover:text-blue-400">
+              <Link
+                href="https://github.com/johncortes117"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="text-gray-400 hover:text-blue-400"
+                >
                   <Github className="h-5 w-5" />
                   <span className="sr-only">GitHub</span>
                 </Button>
               </Link>
-              <Link href="https://linkedin.com/in/john-cortes-pozo" target="_blank" rel="noopener noreferrer">
-                <Button variant="ghost" size="icon" className="text-gray-400 hover:text-blue-400">
+              <Link
+                href="https://linkedin.com/in/john-cortes-pozo"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="text-gray-400 hover:text-blue-400"
+                >
                   <Linkedin className="h-5 w-5" />
                   <span className="sr-only">LinkedIn</span>
                 </Button>
               </Link>
               <Link href="mailto:stevencortespozo@gmail.com">
-                <Button variant="ghost" size="icon" className="text-gray-400 hover:text-blue-400">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="text-gray-400 hover:text-blue-400"
+                >
                   <Mail className="h-5 w-5" />
                   <span className="sr-only">Email</span>
                 </Button>
@@ -1666,7 +2079,10 @@ export default function Portfolio() {
       {/* Certificate Modal */}
       <AnimatePresence>
         {selectedCertificate && (
-          <CertificateModal certificate={selectedCertificate} onClose={() => setSelectedCertificate(null)} />
+          <CertificateModal
+            certificate={selectedCertificate}
+            onClose={() => setSelectedCertificate(null)}
+          />
         )}
       </AnimatePresence>
 
@@ -1677,12 +2093,20 @@ export default function Portfolio() {
           scroll-padding-top: 80px; /* Adjust based on your header height */
         }
         @keyframes float {
-          0% { transform: translateY(0px); opacity: 0.3; }
-          50% { transform: translateY(-20px); opacity: 0.8; }
-          100% { transform: translateY(0px); opacity: 0.3; }
+          0% {
+            transform: translateY(0px);
+            opacity: 0.3;
+          }
+          50% {
+            transform: translateY(-20px);
+            opacity: 0.8;
+          }
+          100% {
+            transform: translateY(0px);
+            opacity: 0.3;
+          }
         }
       `}</style>
     </div>
-  )
+  );
 }
-
