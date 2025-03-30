@@ -849,94 +849,90 @@ export default function Portfolio() {
               >
                 {/* Modern profile image container */}
                 <div className="relative h-[450px] w-full">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-blue-900/20 rounded-2xl overflow-hidden border border-blue-500/20">
-                    <div className="absolute inset-0 backdrop-blur-sm"></div>
+                  {/* Profile image with effects */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="relative w-[280px] h-[280px] md:w-[320px] md:h-[320px]">
+                      {/* Animated glow effect */}
+                      <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-xl animate-pulse"></div>
 
-                    {/* Profile image with effects */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="relative w-[280px] h-[280px] md:w-[320px] md:h-[320px]">
-                        {/* Animated glow effect */}
-                        <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-xl animate-pulse"></div>
+                      {/* Circular frame */}
+                      <div className="absolute inset-0 rounded-full border-2 border-blue-500/50 overflow-hidden p-2">
+                        <div className="w-full h-full rounded-full overflow-hidden border border-blue-400/30 p-2">
+                          <div className="w-full h-full rounded-full overflow-hidden relative group">
+                            {/* Replace with your image */}
+                            <Image
+                              src="/placeholder-user.jpg?height=400&width=400&text=Your+Photo"
+                              alt="John Cortés"
+                              fill
+                              className="object-cover transition-transform duration-500 group-hover:scale-110"
+                            />
 
-                        {/* Circular frame */}
-                        <div className="absolute inset-0 rounded-full border-2 border-blue-500/50 overflow-hidden p-2">
-                          <div className="w-full h-full rounded-full overflow-hidden border border-blue-400/30 p-2">
-                            <div className="w-full h-full rounded-full overflow-hidden relative group">
-                              {/* Replace with your image */}
-                              <Image
-                                src="/placeholder-user.jpg?height=400&width=400&text=Your+Photo"
-                                alt="John Cortés"
-                                fill
-                                className="object-cover transition-transform duration-500 group-hover:scale-110"
+                            {/* Overlay gradient */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-blue-900/60 to-transparent opacity-70"></div>
+
+                            {/* Animated particles */}
+                            {Array.from({ length: 8 }).map((_, i) => (
+                              <motion.div
+                                key={`particle-${i}`}
+                                className="absolute w-1 h-1 bg-blue-400 rounded-full"
+                                style={{
+                                  top: `${Math.random() * 100}%`,
+                                  left: `${Math.random() * 100}%`,
+                                }}
+                                animate={{
+                                  y: [0, -10, 0],
+                                  opacity: [0, 1, 0],
+                                }}
+                                transition={{
+                                  duration: 2,
+                                  repeat: Number.POSITIVE_INFINITY,
+                                  delay: i * 0.2,
+                                }}
                               />
-
-                              {/* Overlay gradient */}
-                              <div className="absolute inset-0 bg-gradient-to-t from-blue-900/60 to-transparent opacity-70"></div>
-
-                              {/* Animated particles */}
-                              {Array.from({ length: 8 }).map((_, i) => (
-                                <motion.div
-                                  key={`particle-${i}`}
-                                  className="absolute w-1 h-1 bg-blue-400 rounded-full"
-                                  style={{
-                                    top: `${Math.random() * 100}%`,
-                                    left: `${Math.random() * 100}%`,
-                                  }}
-                                  animate={{
-                                    y: [0, -10, 0],
-                                    opacity: [0, 1, 0],
-                                  }}
-                                  transition={{
-                                    duration: 2,
-                                    repeat: Number.POSITIVE_INFINITY,
-                                    delay: i * 0.2,
-                                  }}
-                                />
-                              ))}
-                            </div>
+                            ))}
                           </div>
                         </div>
-
-                        {/* Orbiting elements */}
-                        <motion.div
-                          className="absolute w-8 h-8 rounded-full bg-blue-600/20 backdrop-blur-sm border border-blue-500/30 flex items-center justify-center"
-                          style={{ top: "10%", right: "0%" }}
-                          animate={{ rotate: 360 }}
-                          transition={{
-                            duration: 10,
-                            repeat: Number.POSITIVE_INFINITY,
-                            ease: "linear",
-                          }}
-                        >
-                          <Code className="h-4 w-4 text-blue-400" />
-                        </motion.div>
-
-                        <motion.div
-                          className="absolute w-10 h-10 rounded-full bg-blue-600/20 backdrop-blur-sm border border-blue-500/30 flex items-center justify-center"
-                          style={{ bottom: "15%", left: "5%" }}
-                          animate={{ rotate: -360 }}
-                          transition={{
-                            duration: 15,
-                            repeat: Number.POSITIVE_INFINITY,
-                            ease: "linear",
-                          }}
-                        >
-                          <Brain className="h-5 w-5 text-blue-400" />
-                        </motion.div>
-
-                        <motion.div
-                          className="absolute w-6 h-6 rounded-full bg-blue-600/20 backdrop-blur-sm border border-blue-500/30 flex items-center justify-center"
-                          style={{ top: "20%", left: "10%" }}
-                          animate={{ rotate: 360 }}
-                          transition={{
-                            duration: 12,
-                            repeat: Number.POSITIVE_INFINITY,
-                            ease: "linear",
-                          }}
-                        >
-                          <Database className="h-3 w-3 text-blue-400" />
-                        </motion.div>
                       </div>
+
+                      {/* Orbiting elements */}
+                      <motion.div
+                        className="absolute w-8 h-8 rounded-full bg-blue-600/20 backdrop-blur-sm border border-blue-500/30 flex items-center justify-center"
+                        style={{ top: "10%", right: "0%" }}
+                        animate={{ rotate: 360 }}
+                        transition={{
+                          duration: 10,
+                          repeat: Number.POSITIVE_INFINITY,
+                          ease: "linear",
+                        }}
+                      >
+                        <Code className="h-4 w-4 text-blue-400" />
+                      </motion.div>
+
+                      <motion.div
+                        className="absolute w-10 h-10 rounded-full bg-blue-600/20 backdrop-blur-sm border border-blue-500/30 flex items-center justify-center"
+                        style={{ bottom: "15%", left: "5%" }}
+                        animate={{ rotate: -360 }}
+                        transition={{
+                          duration: 15,
+                          repeat: Number.POSITIVE_INFINITY,
+                          ease: "linear",
+                        }}
+                      >
+                        <Brain className="h-5 w-5 text-blue-400" />
+                      </motion.div>
+
+                      <motion.div
+                        className="absolute w-6 h-6 rounded-full bg-blue-600/20 backdrop-blur-sm border border-blue-500/30 flex items-center justify-center"
+                        style={{ top: "20%", left: "10%" }}
+                        animate={{ rotate: 360 }}
+                        transition={{
+                          duration: 12,
+                          repeat: Number.POSITIVE_INFINITY,
+                          ease: "linear",
+                        }}
+                      >
+                        <Database className="h-3 w-3 text-blue-400" />
+                      </motion.div>
                     </div>
                   </div>
 
