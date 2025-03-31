@@ -41,7 +41,7 @@ export default function Portfolio() {
       {/* Header */}
       <Header />
 
-      <main className="relative z-10 pt-16">
+      <main className="relative z-10 pt-16 px-4 md:px-8 lg:px-16 xl:px-24">
         {/* Hero Section */}
         <Hero />
 

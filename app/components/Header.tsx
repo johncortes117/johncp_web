@@ -23,7 +23,7 @@ export default function Header() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.2 }}
     >
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+      <div className="container mx-auto px-4 md:px-8 lg:px-16 xl:px-24 py-4 flex justify-between items-center">
         <motion.div
           className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600"
           whileHover={{ scale: 1.05 }}
