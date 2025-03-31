@@ -27,7 +27,7 @@ export default function ExperienceEducation() {
               variant="outline"
               className="px-3 py-1 text-sm border-blue-500/50 bg-blue-500/5 text-blue-400"
             >
-              <Briefcase className="mr-1 h-3 w-3" /> Experience & Education
+              Experience & Education
             </Badge>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -47,36 +47,36 @@ export default function ExperienceEducation() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
+            className="relative"
           >
-            <h3 className="text-2xl font-bold mb-6 text-blue-400 flex items-center">
-              <Briefcase className="mr-2 h-5 w-5" /> Experience
+            <h3 className="text-2xl font-bold mb-6 text-blue-400">
+              Experience
             </h3>
 
-            <div className="relative border-l-2 border-blue-600/30 pl-8 ml-4 space-y-8">
+            <div className="relative border-l-2 border-blue-600/40 pl-8 ml-2 space-y-12">
               {experienceData.map((item, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="relative"
+                  className="relative group"
                 >
-                  <div className="absolute -left-[1.06rem] top-1 w-5 h-5 rounded-full border-2 border-blue-500 bg-blue-900"></div>
-                  <div className="absolute -left-[2.25rem] top-0 bg-blue-900/50 p-1.5 rounded-lg border border-blue-500/30">
-                    {item.icon}
-                  </div>
-
-                  <div>
-                    <div className="flex items-center mb-1">
+                  {/* Timeline dot */}
+                  <div className="absolute -left-[0.55rem] top-1.5 w-4 h-4 bg-blue-500 rounded-full group-hover:scale-110 transition-transform"></div>
+                  
+                  <div className="group-hover:translate-x-1 transition-transform duration-300">
+                    <div className="flex items-start justify-between mb-1">
                       <h4 className="text-lg text-blue-400 font-semibold">
                         {item.title}
                       </h4>
-                      <span className="mx-2 text-blue-600/70">•</span>
-                      <span className="text-gray-400">{item.company}</span>
                     </div>
-                    <p className="text-gray-500 mb-3 text-sm">{item.period}</p>
-                    <p className="text-gray-300">{item.description}</p>
+                    <p className="text-gray-400 text-sm">{item.company}</p>
+                    <p className="text-gray-500 text-xs mb-2">
+                      {item.period}
+                    </p>
+                    <p className="text-gray-300 text-sm">{item.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -89,36 +89,36 @@ export default function ExperienceEducation() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
+            className="relative"
           >
-            <h3 className="text-2xl font-bold mb-6 text-blue-400 flex items-center">
-              <GraduationCap className="mr-2 h-5 w-5" /> Education
+            <h3 className="text-2xl font-bold mb-6 text-blue-400">
+              Education
             </h3>
 
-            <div className="relative border-l-2 border-blue-600/30 pl-8 ml-4 space-y-8">
+            <div className="relative border-l-2 border-blue-600/40 pl-8 ml-2 space-y-12">
               {educationData.map((item, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="relative"
+                  className="relative group"
                 >
-                  <div className="absolute -left-[1.06rem] top-1 w-5 h-5 rounded-full border-2 border-blue-500 bg-blue-900"></div>
-                  <div className="absolute -left-[2.25rem] top-0 bg-blue-900/50 p-1.5 rounded-lg border border-blue-500/30">
-                    {item.icon}
-                  </div>
-
-                  <div>
-                    <div className="flex items-center mb-1">
+                  {/* Timeline dot */}
+                  <div className="absolute -left-[0.55rem] top-1.5 w-4 h-4 bg-blue-500 rounded-full group-hover:scale-110 transition-transform"></div>
+                  
+                  <div className="group-hover:translate-x-1 transition-transform duration-300">
+                    <div className="flex items-start justify-between mb-1">
                       <h4 className="text-lg text-blue-400 font-semibold">
                         {item.degree}
                       </h4>
-                      <span className="mx-2 text-blue-600/70">•</span>
-                      <span className="text-gray-400">{item.institution}</span>
                     </div>
-                    <p className="text-gray-500 mb-3 text-sm">{item.period}</p>
-                    <p className="text-gray-300">{item.location}</p>
+                    <p className="text-gray-400 text-sm">{item.institution}</p>
+                    <p className="text-gray-500 text-xs mb-2">
+                      {item.period}
+                    </p>
+                    <p className="text-gray-300 text-sm">{item.location}</p>
                   </div>
                 </motion.div>
               ))}
@@ -134,8 +134,8 @@ export default function ExperienceEducation() {
           viewport={{ once: true }}
           className="mt-8"
         >
-          <h3 className="text-2xl font-bold mb-6 text-blue-400 flex items-center text-center md:text-left">
-            <Users className="mr-2 h-5 w-5" /> Extracurricular Activities
+          <h3 className="text-2xl font-bold mb-6 text-blue-400 text-center md:text-left">
+            Extracurricular Activities
           </h3>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -148,25 +148,19 @@ export default function ExperienceEducation() {
                 viewport={{ once: true }}
                 className="relative"
               >
-                <div className="relative h-full">
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600/30 to-blue-400/30 rounded-lg blur-sm opacity-75"></div>
-                  <div className="relative h-full bg-gradient-to-br from-blue-900/40 to-[#001233] border border-blue-500/30 rounded-lg p-6 overflow-hidden">
+                <div className="relative h-full group">
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600/30 to-blue-400/30 rounded-lg blur-sm opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="relative h-full bg-gradient-to-br from-blue-900/40 to-[#001233] border border-blue-500/30 rounded-lg p-6 overflow-hidden group-hover:border-blue-500/50 transition-all duration-300">
                     <div className="absolute right-0 top-0 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl transform translate-x-10 -translate-y-10"></div>
                     <div className="absolute left-0 bottom-0 w-24 h-24 bg-blue-600/10 rounded-full blur-xl transform -translate-x-5 translate-y-5"></div>
 
-                    <div className="flex items-center mb-3">
-                      <div className="bg-blue-900/60 p-2.5 rounded-lg mr-3 border border-blue-500/30">
-                        {item.icon}
-                      </div>
-                      <div>
-                        <h4 className="text-xl font-semibold text-blue-400">
-                          {item.role}
-                        </h4>
-                        <p className="text-gray-400 text-sm">{item.organization}</p>
-                      </div>
+                    <div>
+                      <h4 className="text-xl font-semibold text-blue-400 mb-1">
+                        {item.role}
+                      </h4>
+                      <p className="text-gray-400 text-sm mb-3">{item.organization}</p>
+                      <p className="text-gray-300 relative z-10">{item.description}</p>
                     </div>
-
-                    <p className="text-gray-300 relative z-10">{item.description}</p>
                   </div>
                 </div>
               </motion.div>
