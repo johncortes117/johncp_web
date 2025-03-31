@@ -35,31 +35,4 @@ export const projects: Project[] = [
     link: "https://github.com/johncortes117/portal-citt",
     category: "web",
   },
-  {
-    title: "Drone Navigation System",
-    description:
-      "An AI-powered drone navigation system to optimize delivery routes in urban environments.",
-    tags: ["Python", "TensorFlow", "Computer Vision", "Robotics"],
-    image: "/placeholder.svg?height=200&width=400&text=Drone+Navigation",
-    link: "https://github.com/johncortes117/drone-nav",
-    category: "ai",
-  },
-  {
-    title: "Sentiment Analysis Tool",
-    description:
-      "Real-time sentiment analysis tool for social media monitoring and brand reputation management.",
-    tags: ["Python", "NLP", "Machine Learning", "API"],
-    image: "/placeholder.svg?height=200&width=400&text=Sentiment+Analysis",
-    link: "https://github.com/johncortes117/sentiment-analyzer",
-    category: "ai",
-  },
-  {
-    title: "Crypto Tracker",
-    description:
-      "A responsive web application for tracking cryptocurrency prices and market trends.",
-    tags: ["React", "TypeScript", "API Integration", "TailwindCSS"],
-    image: "/placeholder.svg?height=200&width=400&text=Crypto+Tracker",
-    link: "https://github.com/johncortes117/crypto-tracker",
-    category: "web",
-  },
 ]; 

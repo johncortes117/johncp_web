@@ -48,8 +48,8 @@ export default function Projects() {
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-400 to-blue-600 mx-auto mb-6"></div>
           <p className="max-w-2xl mx-auto text-gray-300">
-            A selection of my most innovative projects in AI, Machine
-            Learning, and Software Development.
+            A showcase of my top three projects focusing on AI solutions and software development. 
+            Each project represents my skills in creating practical applications for real-world problems.
           </p>
         </motion.div>
 

@@ -40,6 +40,7 @@ export default function Header() {
           {[
             { name: "Home", href: "#inicio" },
             { name: "Skills", href: "#skills" },
+            { name: "Experience", href: "#experience" },
             { name: "Projects", href: "#proyectos" },
             { name: "Achievements", href: "#logros" },
             { name: "Certifications", href: "#certificaciones" },
@@ -133,6 +134,7 @@ export default function Header() {
               {[
                 { name: "Home", href: "#inicio" },
                 { name: "Skills", href: "#skills" },
+                { name: "Experience", href: "#experience" },
                 { name: "Projects", href: "#proyectos" },
                 { name: "Achievements", href: "#logros" },
                 { name: "Certifications", href: "#certificaciones" },

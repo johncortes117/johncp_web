@@ -10,6 +10,7 @@ import Background from "./components/Background";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Skills from "./components/Skills";
+import ExperienceEducation from "./components/ExperienceEducation";
 import Projects from "./components/Projects";
 import Achievements from "./components/Achievements";
 import Footer from "./components/Footer";
@@ -46,6 +47,9 @@ export default function Portfolio() {
 
         {/* Skills Section */}
         <Skills />
+        
+        {/* Experience & Education Section */}
+        <ExperienceEducation />
 
         {/* Projects Section */}
         <Projects />

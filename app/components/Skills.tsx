@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code, BookOpen } from "lucide-react";
+import { Code } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { skillCategories, experiences } from "@/app/data/skills";
+import { skillCategories } from "@/app/data/skills";
 
 export default function Skills() {
   return (
@@ -27,15 +27,15 @@ export default function Skills() {
               variant="outline"
               className="px-3 py-1 text-sm border-blue-500/50 bg-blue-500/5 text-blue-400"
             >
-              <Code className="mr-1 h-3 w-3" /> Skills & Experience
+              <Code className="mr-1 h-3 w-3" /> Skills
             </Badge>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             My{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
-              Skills
+              Technical
             </span>{" "}
-            & Experience
+            Skills
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-400 to-blue-600 mx-auto"></div>
         </motion.div>
@@ -47,10 +47,6 @@ export default function Skills() {
           viewport={{ once: true }}
           className="mb-10"
         >
-          <h3 className="text-2xl font-bold mb-6 text-blue-400 flex items-center">
-            <Code className="mr-2 h-5 w-5" /> Skills & Technologies
-          </h3>
-
           <div className="grid md:grid-cols-2 gap-6">
             {skillCategories.map((category, index) => (
               <motion.div
@@ -87,58 +83,6 @@ export default function Skills() {
                       ))}
                     </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          viewport={{ once: true }}
-          className="pt-4"
-        >
-          <h3 className="text-2xl font-bold mb-6 text-blue-400 flex items-center">
-            <BookOpen className="mr-2 h-5 w-5" /> Experience
-          </h3>
-
-          <div className="relative border-l-2 border-blue-600/30 pl-10 ml-6 space-y-10">
-            {experiences.map((experience, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="relative"
-              >
-                <div className="absolute -left-12 top-1 w-6 h-6 rounded-full border-2 border-blue-500 bg-blue-900"></div>
-                <div className="absolute -left-[3.25rem] top-0 bg-blue-900/50 p-1.5 rounded-lg border border-blue-500/30">
-                  {experience.icon}
-                </div>
-
-                <div>
-                  <div className="flex items-center mb-1">
-                    <h4 className="text-lg text-blue-400 font-semibold">
-                      {experience.title}
-                    </h4>
-                    <span className="mx-2 text-blue-600/70">•</span>
-                    <span className="text-gray-400">{experience.company}</span>
-                  </div>
-                  <p className="text-gray-500 mb-3 text-sm">{experience.period}</p>
-                  <ul className="space-y-2">
-                    {experience.description.map((item, i) => (
-                      <li
-                        key={i}
-                        className="text-gray-300 flex items-start gap-2"
-                      >
-                        <span className="text-blue-400 mt-1">•</span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
                 </div>
               </motion.div>
             ))}
