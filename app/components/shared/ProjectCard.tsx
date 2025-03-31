@@ -3,18 +3,12 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
+import { Project } from "@/app/data/projects";
 
 interface ProjectCardProps {
-  project: {
-    title: string;
-    description: string;
-    image: string;
-    link: string;
-    category: string;
-    tags: string[];
-  };
+  project: Project;
   index: number;
 }
 
@@ -70,7 +64,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 {project.description}
               </p>
               <div className="flex flex-wrap gap-2 mb-4">
-                {project.tags.map((tag: string, i: number) => (
+                {project.tags.map((tag, i) => (
                   <Badge
                     key={i}
                     className="bg-blue-900/70 hover:bg-blue-800/90 text-blue-100 border border-blue-500/40 px-3 py-1 text-sm transition-all duration-300"

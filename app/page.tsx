@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUp } from "lucide-react";
+import dynamic from 'next/dynamic';
 
 // Componentes refactorizados
 import Background from "./components/Background";
@@ -11,45 +12,23 @@ import Hero from "./components/Hero";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Achievements from "./components/Achievements";
-import Certificates from "./components/Certificates";
-import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import CertificateModal from "./components/shared/CertificateModal";
+import { useCertificateModal } from "@/hooks/use-certificate-modal";
+
+// Carga dinámica de componentes que no son visibles inicialmente
+const Certificates = dynamic(() => import('./components/Certificates'), {
+  loading: () => <div className="h-screen"></div>
+});
+const Contact = dynamic(() => import('./components/Contact'));
 
 export default function Portfolio() {
   const [mounted, setMounted] = useState(false);
-  const [selectedCertificate, setSelectedCertificate] = useState<any>(null);
+  const { selectedCertificate, closeModal } = useCertificateModal();
 
   useEffect(() => {
     setMounted(true);
   }, []);
-
-  // Close modal when escape key is pressed
-  useEffect(() => {
-    const handleEsc = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setSelectedCertificate(null);
-      }
-    };
-    window.addEventListener("keydown", handleEsc);
-
-    return () => {
-      window.removeEventListener("keydown", handleEsc);
-    };
-  }, []);
-
-  // Prevent body scroll when modal is open
-  useEffect(() => {
-    if (selectedCertificate) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [selectedCertificate]);
 
   if (!mounted) return null;
 
@@ -100,7 +79,7 @@ export default function Portfolio() {
         {selectedCertificate && (
           <CertificateModal
             certificate={selectedCertificate}
-            onClose={() => setSelectedCertificate(null)}
+            onClose={closeModal}
           />
         )}
       </AnimatePresence>
