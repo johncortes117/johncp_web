@@ -13,7 +13,7 @@ export const projects: Project[] = [
     description:
       "An AI assistant based on Llama LLM designed to help young people in Latin America build their educational and professional future.",
     tags: ["Python", "FastAPI", "AI", "LLM"],
-    image: "/placeholder.svg?height=200&width=400&text=AgenteIAma",
+    image: "/agent_IAma.png?height=200&width=400&text=AgenteIAma",
     link: "https://github.com/johncortes117/Agente-IAma",
     category: "ai",
   },
@@ -22,7 +22,7 @@ export const projects: Project[] = [
     description:
       "Mobile and web application with an AI assistant that helps users in Tulcán find the best products and stores for their purchases.",
     tags: ["Flutter", "Dart", "Node.js", "TypeScript", "AI", "LLM"],
-    image: "/placeholder.svg?height=200&width=400&text=Comprandito",
+    image: "/comprandito_landing.png?height=200&width=400&text=Comprandito",
     link: "https://v0-modern-landing-page-eosin-one.vercel.app/",
     category: "web",
   },
@@ -31,7 +31,7 @@ export const projects: Project[] = [
     description:
       "Portal to centralize and manage the centers and projects of UPEC's research department.",
     tags: ["Python", "Django", "HTML", "CSS", "JavaScript"],
-    image: "/placeholder.svg?height=200&width=400&text=Portal+CITT",
+    image: "/ciit_website.png?height=200&width=400&text=Portal+CITT",
     link: "https://github.com/johncortes117/portal-citt",
     category: "web",
   },
