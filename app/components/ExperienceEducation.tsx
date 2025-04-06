@@ -53,7 +53,7 @@ export default function ExperienceEducation() {
               Experience
             </h3>
 
-            <div className="relative border-l-2 border-blue-600/40 pl-8 ml-2 space-y-12">
+            <div className="relative border-l-2 border-blue-600/40 pl-6 ml-2 space-y-12">
               {experienceData.map((item, index) => (
                 <motion.div
                   key={index}
@@ -63,10 +63,31 @@ export default function ExperienceEducation() {
                   viewport={{ once: true }}
                   className="relative group"
                 >
-                  {/* Timeline dot */}
-                  <div className="absolute -left-[0.55rem] top-1.5 w-4 h-4 bg-blue-500 rounded-full group-hover:scale-110 transition-transform"></div>
+                  {/* Timeline icon */}
+                  <motion.div 
+                    className="absolute -left-[1.1rem] top-5 w-6 h-6 bg-blue-900/80 rounded-full border border-blue-500/50 flex items-center justify-center group-hover:border-blue-400 group-hover:bg-blue-800/80"
+                    initial={{ scale: 1 }}
+                    whileInView={{ scale: [1, 1.1, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, repeatType: "loop" }}
+                    whileHover={{ scale: 1.2, rotate: 5 }}
+                  >
+                    <motion.div
+                      animate={{ 
+                        boxShadow: ["0 0 0 0 rgba(59, 130, 246, 0)", "0 0 0 4px rgba(59, 130, 246, 0.3)", "0 0 0 0 rgba(59, 130, 246, 0)"] 
+                      }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                      className="w-full h-full rounded-full flex items-center justify-center"
+                    >
+                      <motion.div
+                        animate={{ rotate: [-5, 5, -5] }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        <Briefcase className="h-3 w-3 text-blue-400" />
+                      </motion.div>
+                    </motion.div>
+                  </motion.div>
                   
-                  <div className="group-hover:translate-x-1 transition-transform duration-300">
+                  <div className="group-hover:translate-x-1 transition-transform duration-300 pt-1 pl-4">
                     <div className="flex items-start justify-between mb-1">
                       <h4 className="text-lg text-blue-400 font-semibold">
                         {item.title}
@@ -95,7 +116,7 @@ export default function ExperienceEducation() {
               Education
             </h3>
 
-            <div className="relative border-l-2 border-blue-600/40 pl-8 ml-2 space-y-12">
+            <div className="relative border-l-2 border-blue-600/40 pl-6 ml-2 space-y-12">
               {educationData.map((item, index) => (
                 <motion.div
                   key={index}
@@ -105,10 +126,31 @@ export default function ExperienceEducation() {
                   viewport={{ once: true }}
                   className="relative group"
                 >
-                  {/* Timeline dot */}
-                  <div className="absolute -left-[0.55rem] top-1.5 w-4 h-4 bg-blue-500 rounded-full group-hover:scale-110 transition-transform"></div>
+                  {/* Timeline icon */}
+                  <motion.div 
+                    className="absolute -left-[1.1rem] top-5 w-6 h-6 bg-blue-900/80 rounded-full border border-blue-500/50 flex items-center justify-center group-hover:border-blue-400 group-hover:bg-blue-800/80"
+                    initial={{ scale: 1 }}
+                    whileInView={{ scale: [1, 1.1, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, repeatType: "loop" }}
+                    whileHover={{ scale: 1.2, rotate: 5 }}
+                  >
+                    <motion.div
+                      animate={{ 
+                        boxShadow: ["0 0 0 0 rgba(59, 130, 246, 0)", "0 0 0 4px rgba(59, 130, 246, 0.3)", "0 0 0 0 rgba(59, 130, 246, 0)"] 
+                      }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                      className="w-full h-full rounded-full flex items-center justify-center"
+                    >
+                      <motion.div
+                        animate={{ rotate: [-5, 5, -5] }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        <GraduationCap className="h-3 w-3 text-blue-400" />
+                      </motion.div>
+                    </motion.div>
+                  </motion.div>
                   
-                  <div className="group-hover:translate-x-1 transition-transform duration-300">
+                  <div className="group-hover:translate-x-1 transition-transform duration-300 pt-2 pl-4">
                     <div className="flex items-start justify-between mb-1">
                       <h4 className="text-lg text-blue-400 font-semibold">
                         {item.degree}
@@ -170,4 +212,4 @@ export default function ExperienceEducation() {
       </div>
     </section>
   );
-} 
+}

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ExternalLink,
   Code,
@@ -12,15 +12,19 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { projects } from "@/app/data/projects";
 import { Project } from "@/app/data/projects";
 import ProjectCard from "./shared/ProjectCard";
+import ProjectModal from "./shared/ProjectModal";
+import { useProjectModal } from "@/hooks/use-project-modal";
 
 export default function Projects() {
+  const { selectedProject, openModal, closeModal } = useProjectModal();
+  
   const filteredProjects = (category: string) => {
     if (category === "all") return projects;
     return projects.filter(project => project.category === category);
   };
 
   return (
-    <section id="proyectos" className="py-24 relative">
+    <section id="projects" className="py-24 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-black via-blue-950/10 to-black"></div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -86,7 +90,7 @@ export default function Projects() {
           <TabsContent value="all" className="mt-8">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredProjects("all").map((project, index) => (
-                <ProjectCard key={index} project={project} index={index} />
+                <ProjectCard key={index} project={project} index={index} onClick={openModal} />
               ))}
             </div>
           </TabsContent>
@@ -94,7 +98,7 @@ export default function Projects() {
           <TabsContent value="ai" className="mt-8">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredProjects("ai").map((project, index) => (
-                <ProjectCard key={index} project={project} index={index} />
+                <ProjectCard key={index} project={project} index={index} onClick={openModal} />
               ))}
             </div>
           </TabsContent>
@@ -102,7 +106,7 @@ export default function Projects() {
           <TabsContent value="web" className="mt-8">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredProjects("web").map((project, index) => (
-                <ProjectCard key={index} project={project} index={index} />
+                <ProjectCard key={index} project={project} index={index} onClick={openModal} />
               ))}
             </div>
           </TabsContent>
@@ -110,12 +114,22 @@ export default function Projects() {
           <TabsContent value="other" className="mt-8">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredProjects("other").map((project, index) => (
-                <ProjectCard key={index} project={project} index={index} />
+                <ProjectCard key={index} project={project} index={index} onClick={openModal} />
               ))}
             </div>
           </TabsContent>
         </Tabs>
       </div>
+
+      {/* Project Modal */}
+      <AnimatePresence>
+        {selectedProject && (
+          <ProjectModal
+            project={selectedProject}
+            onClose={closeModal}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 }

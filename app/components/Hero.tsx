@@ -563,6 +563,9 @@ export default function Hero() {
                 <Button
                   variant="outline"
                   className="border-blue-600 text-blue-400 hover:bg-blue-900/20 group"
+                  onClick={() => {
+                    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
                 >
                   View Projects{" "}
                   <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />

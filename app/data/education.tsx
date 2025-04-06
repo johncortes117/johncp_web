@@ -34,7 +34,7 @@ export const experienceData: ExperienceItem[] = [
   },
   {
     title: "Research Assistant",
-    company: "UPEC",
+    company: "Universidad Politécnica Estatal del Carchi",
     period: "March 2025 - Present",
     description: "Assist in the research project \"Artificial Intelligence to Predict Stress Factors in Dairy Cattle\", utilizing machine learning techniques for data analysis and model development.",
     icon: <BookOpen className="h-5 w-5 text-blue-400" />,
@@ -44,9 +44,9 @@ export const experienceData: ExperienceItem[] = [
 export const educationData: EducationItem[] = [
   {
     degree: "Computer Science Engineering",
-    institution: "State Polytechnic University of Carchi",
+    institution: "Universidad Politécnica Estatal del Carchi",
     period: "May 2022 - Present",
-    location: "Tulcan, Ecuador",
+    location: "Tulcán, Ecuador",
     icon: <GraduationCap className="h-5 w-5 text-blue-400" />,
   },
   {

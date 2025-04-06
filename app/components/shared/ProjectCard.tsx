@@ -10,9 +10,10 @@ import { Project } from "@/app/data/projects";
 interface ProjectCardProps {
   project: Project;
   index: number;
+  onClick: (project: Project) => void;
 }
 
-export default function ProjectCard({ project, index }: ProjectCardProps) {
+export default function ProjectCard({ project, index, onClick }: ProjectCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -21,12 +22,10 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       viewport={{ once: true }}
       whileHover={{ y: -5 }}
       className="group"
+      onClick={() => onClick(project)}
     >
-      <a
-        href={project.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block h-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black rounded-lg"
+      <div
+        className="block h-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black rounded-lg cursor-pointer"
         aria-label={`View project: ${project.title}`}
       >
         <div className="relative h-full">
@@ -80,7 +79,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             </CardContent>
           </Card>
         </div>
-      </a>
+      </div>
     </motion.div>
   );
 }
