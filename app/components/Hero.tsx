@@ -556,7 +556,7 @@ export default function Hero() {
                 >
                   <Button className="bg-blue-600 hover:bg-blue-700 text-white group relative overflow-hidden">
                     <span className="absolute right-full w-12 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:translate-x-96 ease"></span>
-                    Download CV{" "}
+                    View CV{" "}
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
