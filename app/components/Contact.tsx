@@ -129,13 +129,13 @@ export default function Contact() {
                         software development.
                       </p>
                       <Link 
-                        href="https://drive.google.com/file/d/1x54jXSzYkmjPj6RsGao8b-H-i1A0ckd2/view?usp=sharing"
+                        href="https://drive.google.com/file/d/1BhcPQbHDot6wRQU8J7GXRRT6YhZsBV-P/view?usp=sharing"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white group relative overflow-hidden">
                           <span className="absolute right-full w-12 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:translate-x-96 ease"></span>
-                          Download CV{" "}
+                          View CV{" "}
                           <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </Button>
                       </Link>
