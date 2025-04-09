@@ -2,6 +2,7 @@ import type React from "react"
 import "@/app/globals.css"
 import { Poppins } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Analytics } from "@vercel/analytics/react"
 
 const poppins = Poppins({
   weight: ["300", "400", "500", "600", "700", "800"],
@@ -37,6 +38,7 @@ export default function RootLayout({
       <body className={`${poppins.variable} font-sans`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           {children}
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
