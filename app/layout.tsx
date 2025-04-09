@@ -31,6 +31,7 @@ export default function RootLayout({
         {/* Preload critical assets */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="icon" href="/logo_johncp.png" type="image/png" />
         <meta name="theme-color" content="#0f172a" />
       </head>
       <body className={`${poppins.variable} font-sans`}>
