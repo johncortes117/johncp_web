@@ -521,25 +521,13 @@ export default function Hero() {
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
                 <p>
-                  I am a Computer Engineering student with a strong focus on
-                  Artificial Intelligence, Machine Learning, and
-                  Mathematics. I am passionate not only about learning these
-                  subjects but also about applying them, researching, and
-                  understanding how AI can transform the way we solve
-                  problems.
+                  AI Engineer specialized in building autonomous multi-agent systems that address real-world challenges. Currently leading technical teams in AI startups, designing and developing intelligent agents using state-of-the-art technologies such as LangChain and LangGraph, implementing Retrieval-Augmented Generation (RAG) systems, and orchestrating complex workflows that enable advanced AI capabilities.
                 </p>
                 <p>
-                  Additionally, I enjoy developing software and constantly
-                  challenge myself with projects that contribute to my
-                  professional growth.
+                  With a foundation in Computer Engineering, I have progressed to hands-on experience creating AI products that deliver measurable business impact. I specialize in LLM architectures and have developed functional prototypes that serve as the basis for core AI offerings in early-stage companies.
                 </p>
                 <p>
-                  <span className="text-blue-400 font-semibold">
-                    Fun fact:
-                  </span>{" "}
-                  My fascination with AI is so great that, in my free time,
-                  I follow the latest news and advances in the field to stay
-                  up-to-date and continue to be inspired.
+                  I focus on bridging technical innovation with business strategy, ensuring AI solutions align with organizational goals and generate tangible value. I lead technical roadmaps, refine prompt engineering, and integrate external tools to transform AI potential into effective, scalable outcomes.
                 </p>
               </motion.div>
 
