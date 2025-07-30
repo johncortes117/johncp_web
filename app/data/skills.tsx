@@ -14,7 +14,6 @@ export const skillCategories: SkillCategory[] = [
     skills: [
       "LangChain",
       "LangGraph",
-      "LangSmith",
       "Workflow Orchestration",
       "LLMs",
       "Prompt Engineering",
