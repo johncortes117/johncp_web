@@ -13,6 +13,16 @@ export interface Certificate {
 
 export const certificates: Certificate[] = [
   {
+    title: "Introduction to LangGraph",
+    issuer: "LangChain Academy",
+    date: "July 2025",
+    link: "https://academy.langchain.com/certificates/p7wkclgp0a",
+    icon: <Brain className="h-6 w-6 text-blue-400" />,
+    description:
+      "Fundamentals of LangGraph for orchestrating multi-agent systems with LLMs, memory, RAG, tool integrations, and LLM deployment.",
+    category: "ai"
+  },
+  {
     title: "Mobile App Development",
     issuer: "Google",
     date: "March 2025",
