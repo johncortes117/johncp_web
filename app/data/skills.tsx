@@ -53,7 +53,7 @@ export const skillCategories: SkillCategory[] = [
     skills: ["Leadership",
              "Effective Communication",
              "Critical Thinking",
-             "Problem Solving,",
+             "Problem Solving",
              "Team Collaboration",
              "AI Product Thinking"],
   },
