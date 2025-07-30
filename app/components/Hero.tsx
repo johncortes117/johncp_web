@@ -521,7 +521,7 @@ export default function Hero() {
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
                 <p>
-                  AI Engineer specialized in building autonomous multi-agent systems that address real-world challenges. Currently leading technical teams in AI startups, designing and developing intelligent agents using state-of-the-art technologies such as LangChain and LangGraph, implementing Retrieval-Augmented Generation (RAG) systems, and orchestrating complex workflows that enable advanced AI capabilities.
+                  AI Engineer specialized in building autonomous multi-agent systems that address real-world challenges. Currently leading technical teams in AI startups, designing and developing intelligent agents.
                 </p>
                 <p>
                   With a foundation in Computer Engineering, I have progressed to hands-on experience creating AI products that deliver measurable business impact. I specialize in LLM architectures and have developed functional prototypes that serve as the basis for core AI offerings in early-stage companies.
