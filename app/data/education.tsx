@@ -26,10 +26,10 @@ export interface ExtracurricularItem {
 
 export const experienceData: ExperienceItem[] = [
   {
-    title: "AI Developer",
+    title: "AI Team Lead",
     company: "Qikstarts AI",
     period: "March 2025 - Present",
-    description: "Collaborate in the design, development, and orchestration of AI agents utilizing Retrieval-Augmented Generation (RAG) techniques to automate customer engagement, loyalty programs, and sales processes.",
+    description: "Lead the development of AI-powered agents at Qikstarts AI, an early-stage startup focused on automating customer engagement and loyalty strategies. Built and orchestrated agent-based workflows using LLMs and LangChain ecosystem (LangGraph, LangSmith, RAG, and external tool integrations).",
     icon: <Briefcase className="h-5 w-5 text-blue-400" />,
   },
   {
@@ -43,7 +43,7 @@ export const experienceData: ExperienceItem[] = [
 
 export const educationData: EducationItem[] = [
   {
-    degree: "Computer Science Engineering",
+    degree: "Bachelor’s degree in Computer Science",
     institution: "Universidad Politécnica Estatal del Carchi",
     period: "May 2022 - Present",
     location: "Tulcán, Ecuador",
@@ -69,6 +69,12 @@ export const extracurricularData: ExtracurricularItem[] = [
     role: "Active Member",
     organization: "Programming Club",
     description: "Participating in UPEC's Programming Club activities and competitions.",
+    icon: <Users className="h-5 w-5 text-blue-400" />,
+  },
+  {
+    role: "Ambassador",
+    organization: "IEEEXtrem 19.0",
+    description: "Promoted and coordinated participation in the IEEEXtreme 19.0 global programming competition. Acted as a liaison between participants and IEEE organizers, providing guidance, resolving queries, and encouraging engagement across local IEEE student branches.",
     icon: <Users className="h-5 w-5 text-blue-400" />,
   },
 ]; 
