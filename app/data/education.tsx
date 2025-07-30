@@ -74,7 +74,7 @@ export const extracurricularData: ExtracurricularItem[] = [
   {
     role: "Ambassador",
     organization: "IEEEXtrem 19.0",
-    description: "Promoted and coordinated participation in the IEEEXtreme 19.0 global programming competition. Acted as a liaison between participants and IEEE organizers, providing guidance, resolving queries, and encouraging engagement across local IEEE student branches.",
+    description: "Promoted and coordinated participation in the IEEEXtreme 19.0 global programming competition.",
     icon: <Users className="h-5 w-5 text-blue-400" />,
   },
 ]; 
